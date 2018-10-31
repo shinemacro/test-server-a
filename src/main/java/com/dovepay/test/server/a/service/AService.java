@@ -25,7 +25,7 @@ public class AService {
         System.out.println("restTemplate start...");
         B b = null;
         try {
-            url = url+"/b/"+id;
+            url = url+"/test-server-b/b/"+id;
             System.out.println("restTemplate burl:"+url);
             b = restTemplate.getForObject(url, B.class);
         }catch(Exception e) {

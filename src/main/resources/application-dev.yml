@@ -1,6 +1,6 @@
 a:
   env: dev
-  burl: ${burl:http://localhost:8081/test-server-b}
+  burl: ${burl:http://localhost:8081}
 
 spring:
   datasource:
