@@ -72,7 +72,7 @@ public class AContorller {
         return result;
     }
     
-    @RequestMapping(value="/test-server-a/a", method=RequestMethod.GET)
+    @RequestMapping(value="/a", method=RequestMethod.GET)
     @ApiOperation(value="查询所有a接口", notes="返回所有a")
     public String getAllA(){
         System.out.println("getAllA run...");
@@ -80,7 +80,7 @@ public class AContorller {
     }
     
     @ApiOperation(value="a查询接口", notes="根据ID返回a")
-    @RequestMapping(value="/test-server-a/a/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/a/{id}", method=RequestMethod.GET)
     public Object getA(@PathVariable(value = "id") Integer id){
         A a = new A();
         a.setId(id);
