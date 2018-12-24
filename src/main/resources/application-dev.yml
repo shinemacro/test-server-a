@@ -1,6 +1,6 @@
 a:
   env: dev
-  burl: ${burl:http://localhost:8081}
+  burl: ${burl:http://test.openshift.com}
 
 spring:
   datasource:
