@@ -2,7 +2,6 @@
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -11,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +47,8 @@ public class AContorller {
     @ApiOperation(value="test-server-a服务启动接口", notes="返回服务信息")
     public Object index(){
         System.out.println("test-server-a run...");
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new LinkedHashMap<String, Object>();
+        result.put("serverVersion", "v1");
         result.put("serverName", "test-server-a");
         result.put("spring.profiles.active", env.getProperty("spring.profiles.active"));
         result.put("env", env.getProperty("a.env"));
