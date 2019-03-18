@@ -85,7 +85,11 @@ public class AContorller {
         A a = new A();
         a.setId(id);
         a.setCreateTime(new Date());
-        a.setDescription("server a");
+        try {
+            a.setDescription("server a, localIp:"+InetAddress.getLocalHost().getHostAddress());
+        } catch (UnknownHostException e) {
+             e.printStackTrace();
+        }
         a.setVersion("0.0.1");
         a.setName("testA");
         a.setEnvironment(env.getProperty("a.env"));
