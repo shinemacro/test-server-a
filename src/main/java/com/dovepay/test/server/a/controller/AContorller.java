@@ -1,8 +1,7 @@
- package com.dovepay.test.server.a.controller;
+package com.dovepay.test.server.a.controller;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -11,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +47,8 @@ public class AContorller {
     @ApiOperation(value="test-server-a服务启动接口", notes="返回服务信息")
     public Object index(){
         System.out.println("test-server-a run...");
-        Map<String, Object> result = new HashMap<String, Object>();
+        Map<String, Object> result = new LinkedHashMap<String, Object>();
+        result.put("serverVersion", "v2");
         result.put("serverName", "test-server-a");
         result.put("spring.profiles.active", env.getProperty("spring.profiles.active"));
         result.put("env", env.getProperty("a.env"));
@@ -72,7 +72,7 @@ public class AContorller {
         return result;
     }
     
-    @RequestMapping(value="/test-server-a/a", method=RequestMethod.GET)
+    @RequestMapping(value="/a", method=RequestMethod.GET)
     @ApiOperation(value="查询所有a接口", notes="返回所有a")
     public String getAllA(){
         System.out.println("getAllA run...");
@@ -80,16 +80,12 @@ public class AContorller {
     }
     
     @ApiOperation(value="a查询接口", notes="根据ID返回a")
-    @RequestMapping(value="/test-server-a/a/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/a/{id}", method=RequestMethod.GET)
     public Object getA(@PathVariable(value = "id") Integer id){
         A a = new A();
         a.setId(id);
         a.setCreateTime(new Date());
-        try {
-            a.setDescription("server a, localIp:"+InetAddress.getLocalHost().getHostAddress());
-        } catch (UnknownHostException e) {
-             e.printStackTrace();
-        }
+        a.setDescription("server a");
         a.setVersion("0.0.1");
         a.setName("testA");
         a.setEnvironment(env.getProperty("a.env"));

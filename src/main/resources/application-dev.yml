@@ -1,6 +1,6 @@
 a:
-  env: dev
-  burl: ${burl:http://localhost:8081}
+  env: dev-8082
+  burl: ${burl:http://test.kong.com:8000}
 
 spring:
   datasource:
